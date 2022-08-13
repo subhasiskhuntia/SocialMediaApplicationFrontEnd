@@ -1,0 +1,42 @@
+<div class="mainContainer">
+  <app-sidebar class="sidebar"></app-sidebar>
+  <div class="chat">
+    <h2>This is a chat application</h2>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Enter your name"
+      style="margin-right: 10px"
+      [(ngModel)]="name"
+    />
+    <button class="btn btn-primary">Enter</button>
+    <br />
+    Welcome {{ name }}
+    <div class="messageContainer" id="messageContainer" #scrollMe>
+      <div *ngFor="let string of greetings" class="msg-container">
+        <div class="msg-sender">
+          <p>
+            {{string.sender}}
+          </p>
+        </div>
+        <div class="msg">
+          <div class="msg-content">
+              {{ string.message }}
+            </div>
+            <div class="msg-date">{{string.time | date:"MMM d, y, h:mm a"}}</div>
+        </div>
+      </div>
+    </div>
+      <form #loginForm="ngForm">
+        <div>
+          <br />
+          <textarea autocomplete="off" placeholder="Type Your Message..." name="newmessage" [(ngModel)]="newmessage"
+            required></textarea>
+          <button class="btn btn-primary" (click)="sendMessage()" [disabled]="!loginForm.valid">
+            Send
+          </button>
+        </div>
+      </form>
+  </div>
+</div>

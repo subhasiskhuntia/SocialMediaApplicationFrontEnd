@@ -1,0 +1,45 @@
+.sidebar {
+  width: 400px;
+  border: 2px black solid;
+  position: absolute;
+  margin-top: 50px;
+}
+.chat {
+  margin-left: 500px;
+}
+.mainContainer {
+  display: flex;
+}
+.messageContainer {
+  height: 70vh;
+  width: 700px;
+  overflow-y: scroll;
+}
+.msg-content{
+    /* min-height: 40px; */
+    word-wrap: break-word;
+    margin-bottom: 5px;
+}
+.msg{
+    /* min-height:60px ; */
+    background-color: rgb(228, 228, 230);
+    margin: 10px;
+    width: 90%;
+    
+    /* border-radius: 100%; */
+}
+.msg-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.msg-sender{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.msg-sender p{
+    /* width: 30px; */
+    background-color: bisque;
+    border-radius: 100%;
+}
