@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ChatServiceService } from '../chat-service.service';
 
 @Component({
@@ -8,7 +9,13 @@ import { ChatServiceService } from '../chat-service.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private chatService:ChatServiceService) { }
+  receiver:string="";
+  constructor(private chatService:ChatServiceService,private activeRoute:ActivatedRoute) {
+    activeRoute.params.subscribe(a=>
+      this.receiver=a["name"]
+    )
+    
+   }
   contactedPerson:any=[];
   sender:string=sessionStorage.getItem("user")!;
   ngOnInit(): void {

@@ -1,24 +1,30 @@
-<div *ngFor="let contact of contactedPerson">
-    
+<div class="discussions custom-scrollbar">
+
+    <div *ngFor="let contact of contactedPerson"  [ngClass]="contact.sender ==receiver || contact.receiver==receiver?'active_user discussion message-active': 'discussion message-active'">
+        
     <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
         <!-- <div class="online"></div> -->
       </div>
-    <p *ngIf="contact.sender==sender">
-        <a routerLink="/chat/{{contact.receiver}}">
-            {{contact.receiver}}
-        </a>
-    </p>
-    <!-- {{contact.sender}}
-    {{contact.receiver}} -->
-    <p *ngIf="contact.sender!=sender">
-        <a routerLink="/chat/{{contact.sender}}">
-            {{contact.sender}}
-        </a>
-    </p>
-    <div>
-        {{contact.message}}
-    </div>
-    <div>
+      <div class="desc-contact">
+
+          <p *ngIf="contact.sender==sender" class="name">
+              <a routerLink="/chat/{{contact.receiver}}">
+                  {{contact.receiver | titlecase}}
+                </a>
+            </p>
+            <!-- {{contact.sender}}
+                {{contact.receiver}} -->
+                <p *ngIf="contact.sender!=sender" class="name">
+                    <a routerLink="/chat/{{contact.sender}}">
+                        {{contact.sender | titlecase}}
+                    </a>
+                </p>
+                <div class="message">
+                    {{contact.message}}
+                </div>
+            </div>
+    <div class="timer">
         {{contact.time |date:"MMM d, y, h:mm a"}}
     </div>
+</div>
 </div>
