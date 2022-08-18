@@ -1,1 +1,49 @@
-<p>user-login works!</p>
+<div style="padding-top: 50px;"></div>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a routerLink="/signup"><button>Sign Up</button></a>
+		</form>
+        
+	</div>
+	<div class="form-container sign-in-container">
+		<form #userform="ngForm" (submit)="checkUser(userform)">
+			<h1>Sign in</h1>
+			<mat-form-field>	
+				<input type="email" placeholder="Email" name="username" ngModel required matInput/>
+			</mat-form-field>
+			<mat-form-field>
+
+				<input type="password" placeholder="Password" name="password" required  ngModel matInput/>
+			</mat-form-field>
+			<a href="#">Forgot your password?</a>
+			<button [disabled]="userform.invalid" id="signin">Sign In</button>
+            <div class="mobi">
+                <p>Sign Up if you don't have account</p>
+                <button routerLink="/signup">Sign Up</button>
+            </div>
+		</form>
+        
+          
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" routerLink="/signin">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>

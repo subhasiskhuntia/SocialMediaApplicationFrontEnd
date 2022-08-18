@@ -1,1 +1,98 @@
-<p>user-signin works!</p>
+<div style="padding-top: 50px;"></div>
+<div class="container right-panel-active" id="container">
+	<div class="form-container sign-up-container">
+		<form [formGroup]="formSignIn">
+			<h1>Create Account</h1>
+			<mat-form-field>
+				
+				<input type="text" placeholder="First Name" name="firstName"required formControlName="firstName" matInput/>
+			</mat-form-field>
+            <mat-form-field>
+
+				<input type="text" placeholder="Last Name" name="lastName" required formControlName="lastName"  matInput/>
+			</mat-form-field>
+			<mat-form-field>
+
+				<input type="email" placeholder="Email" name="username" required formControlName="email" matInput/>
+			</mat-form-field>
+			<mat-form-field>
+
+				<input type="password" placeholder="Password" name="password" required formControlName="password" matInput/>
+			</mat-form-field>
+            <mat-form-field>
+
+				<input type="text" placeholder="Phone Number" name="phone" required formControlName="phone" matInput/>
+			</mat-form-field>
+            <!-- <mat-form-field>
+
+				<input type="text" placeholder="date of birth" name="dob" required formControlName="dob" matInput/>
+			</mat-form-field> -->
+			<mat-form-field appearance="fill">
+				<mat-label>Date of Birth</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="dob">
+				<mat-hint>MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			  </mat-form-field>
+            <mat-form-field>
+
+				<input type="text" placeholder="About" name="about" required formControlName="about" matInput/>
+			</mat-form-field>
+			<button [disabled]="formSignIn.invalid" id="signup" data-toggle="modal" data-target="#exampleModalCenter" (click)="sendOtp()">Sign Up</button>
+            <div class="mobi">
+            <p>Sign In if you already have acount</p>
+            <button routerLink="/login">Sign In</button>
+        </div>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button>Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" routerLink="/login">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade in" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLongTitle">Enter OTP</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <label for="otp" style="margin-right: 10px;" >Enter 5 digit otp </label>
+         <input type="text" [(ngModel)]="otp">
+         <br>
+         <!-- <br>
+         <label for="fname" style="margin-right: 10px;">Enter new password  </label>
+         <input type="password" >
+        </div> -->
+		<p>Time Remaining {{timeLeft}} sec</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeOtpSender">Close</button>
+          <button type="button" class="btn btn-primary" (click)="checkOtp()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
