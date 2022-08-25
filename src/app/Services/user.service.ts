@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Post } from '../classes/post';
 import { User } from '../classes/user';
 
 @Injectable({
@@ -15,7 +16,10 @@ export class UserService {
     });
   }
   userLogIn(user: User): Observable<string> {
-    return this.http.post('http://localhost:8081/authenticate', user, {
+    return this.http.post('http://localhost:8081/authenticate', {
+      "username":user.email,
+      "password":user.password
+    }, {
       responseType: 'text',
     });
   }
@@ -36,5 +40,10 @@ export class UserService {
       { responseType: 'text' }
     );
   }
-
+  postContent(postContent:string):Observable<string>{
+    return this.http.post("http://localhost:8081/api/user/post",{"email":sessionStorage.getItem("auth-user"),"postContent":postContent},{responseType:"text"})
+  }
+  userLikes():Observable<any>{
+    return this.http.post("http://localhost:8081/api/user/getUserLikes",{"email":sessionStorage.getItem("auth-user")});
+  }
 }

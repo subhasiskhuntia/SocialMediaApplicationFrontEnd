@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavigationbarComponent } from './navigationbar/navigationbar.component';
 import { HomeComponent } from './home/home.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -27,6 +27,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule, MatCardTitle} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AuthInterceptorService } from './Services/auth-interceptor.service';
+import { FriendsComponent } from './friends/friends.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     NavigationbarComponent,
     HomeComponent,
     UserLoginComponent,
-    UserSigninComponent
+    UserSigninComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

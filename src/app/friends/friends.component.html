@@ -1,0 +1,37 @@
+<div class="friendsContainer">
+    <div class="requestContainer" *ngIf="totalRequest!=0" style="width: 100%;">
+
+        <div style="width: 100%;">
+            <h2>Friend Requests</h2>
+        </div>
+        <div *ngFor="let request of friendRequests" class="specificUser">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
+            <div class="userName">{{request.firstName}} {{request.lastName}}</div>
+            <button class="btn btn-primary btn-large" (click)="acceptRequest(request.id)">Accept Request</button>
+            <button class="btn btn-secondary btn-large">Remove</button>
+        </div>
+    </div>
+    <div class="suggestions">
+
+        <div style="width: 100%;">
+            <h2>People You May Know</h2>
+        </div>
+        <div *ngFor="let suggestedFriend of suggestedFriends" class="specificUser">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
+            <div class="userName">{{suggestedFriend.firstName}} {{suggestedFriend.lastName}}</div>
+            <button class="btn btn-primary btn-large" (click)="sendFriendRequest(suggestedFriend.id)">Add Friend</button>
+            <button class="btn btn-secondary btn-large">Remove</button>
+        </div>
+    </div>
+    <div class="AllFriendContainer"  style="width: 100%;">
+
+        <div style="width: 100%;">
+            <h2>Friends</h2>
+        </div>
+        <div *ngFor="let friend of friends" class="specificUser">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="">
+            <div class="userName">{{friend.firstName}} {{friend.lastName}}</div>
+            <button class="btn btn-primary btn-large">View Profile</button>
+        </div>
+    </div>
+</div>

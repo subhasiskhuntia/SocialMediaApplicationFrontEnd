@@ -1,0 +1,74 @@
+.homeContainer{
+    width: 40%;
+    margin: auto;
+    box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
+}
+.post input{
+    width: 90%;
+}
+.form-group, .post{
+    padding: 5px;
+    margin: auto;
+}
+.postButton{
+    margin-top: 10px;
+    margin-left: 10px;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+.postTopPart{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    
+}
+.postTopPart img{
+    width: 30px;
+    margin-right: 10px;
+}
+.postSenderDetail{
+    display: flex;
+    margin-right: 50px;
+    font-size: larger;
+    font-weight: 500;
+}
+.postSenderDetail div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.postContent{
+    min-height: 100px;
+    background-color: whitesmoke;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: large;
+    font-weight: 300;
+    /* font-family: cursive; */
+}
+.posts{
+    margin: 10px;
+}
+.postedOn{
+    margin-left: auto;
+}
+.likeComment{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+ }
+ .likeComment .btn{
+    width: 50%;
+    margin: 2px;
+ }
+ .likes{
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+ }
