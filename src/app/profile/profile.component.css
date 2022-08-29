@@ -1,5 +1,6 @@
-.homeContainer{
+.homeContainer,.contentPosted{
     width: 40%;
+    margin-top: 25px !important;
     margin: auto;
     /* box-shadow: 0px 8px 10px rgba(0,0,0,0.20); */
 }
@@ -120,4 +121,31 @@
  .post,.posts{
     margin-bottom: 30px !important;
     box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
+ }
+ .profileHeading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+ .profileHeading img{
+    width: 20%;
+    margin-bottom: 10px;
+ }
+ .profileHeading span{
+    font-size: xx-large;
+    margin-bottom: 10px;
+ }
+ .profileHeading .about{
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
+ .usersLike,.usersComment{
+   height: 150px;
+   overflow: auto;
+   margin: 20px;
+   /* margin-bottom: 20px; */
+   padding: 5px;
+   font-size: medium;
+   font-weight: 300;
  }

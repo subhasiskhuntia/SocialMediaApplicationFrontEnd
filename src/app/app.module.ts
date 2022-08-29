@@ -29,6 +29,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { FriendsComponent } from './friends/friends.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FriendsComponent } from './friends/friends.component';
     HomeComponent,
     UserLoginComponent,
     UserSigninComponent,
-    FriendsComponent
+    FriendsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

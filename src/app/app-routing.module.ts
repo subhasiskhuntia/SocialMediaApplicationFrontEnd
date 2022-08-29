@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
 import { FriendsComponent } from './friends/friends.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path:"friends",
     component:FriendsComponent
+  },
+  {
+    path:"profile",
+    component:ProfileComponent
   }
 ];
 

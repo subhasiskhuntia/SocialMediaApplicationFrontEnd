@@ -46,4 +46,13 @@ export class UserService {
   userLikes():Observable<any>{
     return this.http.post("http://localhost:8081/api/user/getUserLikes",{"email":sessionStorage.getItem("auth-user")});
   }
+  loadUser():Observable<any>{
+    return this.http.post("http://localhost:8081/api/user/getUser",{"email": sessionStorage.getItem("auth-user")})
+  }
+  userComments():Observable<any>{
+    return this.http.post("http://localhost:8081/api/user/getUserComments",{"email":sessionStorage.getItem("auth-user")})
+  }
+  getUsersLikeOnPosts():Observable<any>{
+    return this.http.post("http://localhost:8081/api/user/getUsersLikeOnPosts",{"email":sessionStorage.getItem("auth-user")})
+  }
 }

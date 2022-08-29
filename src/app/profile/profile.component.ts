@@ -5,42 +5,34 @@ import { PostService } from '../Services/post.service';
 import { UserService } from '../Services/user.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
-export class HomeComponent implements OnInit {
-  name: string = sessionStorage.getItem('user')!;
-  postContent: string = '';
-  userComment: string = '';
-  posts: any;
-  likedPosts: any;
-  showComments: boolean = false;
-  comments: any;
-  commentId: number = -1;
+export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postService: PostService,
     private commentService: CommentService
   ) {}
-
+  user: any;
+  userComment: string = '';
+  likedPosts: any;
+  userComments:any;
+  showComments: boolean = false;
+  comments: any;
+  commentId: number = -1;
+  showLikes:boolean=false;
+  usersLikeOnPosts:any;
   ngOnInit(): void {
-    this.getPostForUser();
-    this.getUserLikes();
+    this.loadUser();
+    this.loadUserComments();
+    this.getUsersLikeOnPost();
   }
-  setUser() {
-    sessionStorage.setItem('user', this.name);
-  }
-  PostContent() {
-    this.userService
-      .postContent(this.postContent)
-      .subscribe((result) => console.log(result));
-    this.postContent = '';
-  }
-  getPostForUser() {
-    this.postService.getPostForUser().subscribe((result) => {
-      // console.log(result);
-      this.posts = result;
+  loadUser() {
+    this.userService.loadUser().subscribe((result) => {
+      this.user = result;
+      console.log(result);
     });
   }
   likeThisPost(post: Post, index: number) {
@@ -56,13 +48,13 @@ export class HomeComponent implements OnInit {
           likePost: post,
           createdAt: new Date(),
         });
-        this.posts[index].total_likes = this.posts[index].total_likes + 1;
+        this.user.posts[index].total_likes = this.user.posts[index].total_likes + 1;
       }
     );
   }
   getUserLikes() {
     this.userService.userLikes().subscribe((result) => {
-      // console.log(result);
+      console.log(result);
       this.likedPosts = result;
     });
   }
@@ -84,8 +76,8 @@ export class HomeComponent implements OnInit {
             return a.likePost.id != id;
           }
         );
-        if (this.posts[index].total_likes > 0) {
-          this.posts[index].total_likes = this.posts[index].total_likes - 1;
+        if (this.user?.posts[index].total_likes > 0) {
+          this.user.posts[index].total_likes = this.user.posts[index].total_likes - 1;
         }
       }
     );
@@ -114,5 +106,23 @@ export class HomeComponent implements OnInit {
 
       this.comments = result;
     });
+  }
+  loadUserComments(){
+    this.userService.userComments().subscribe(result=>{
+      this.comments=result;
+      console.log(result);
+      
+    }
+    );
+  }
+  toggleShowUserComments(){
+    this.showComments=!this.showComments;
+  }
+  toggleShowUserLikes(){
+    this.showLikes=!this.showLikes;
+  }
+  getUsersLikeOnPost(){
+    this.userService.getUsersLikeOnPosts().subscribe(result=>this.usersLikeOnPosts=result
+    )
   }
 }
