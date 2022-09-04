@@ -30,6 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AuthInterceptorService } from './Services/auth-interceptor.service';
 import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PostsComponent } from './posts/posts.component';
+import { SpecificPostComponent } from './specific-post/specific-post.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ProfileComponent } from './profile/profile.component';
     UserLoginComponent,
     UserSigninComponent,
     FriendsComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostsComponent,
+    SpecificPostComponent
   ],
   imports: [
     BrowserModule,

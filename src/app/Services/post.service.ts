@@ -27,4 +27,7 @@ export class PostService {
       { responseType: 'text' }
     );
   }
+  public getSpecificPost(id:number):Observable<any>{
+    return this.http.get("http://localhost:8081/api/user/post/"+id);
+  }
 }

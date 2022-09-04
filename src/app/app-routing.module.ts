@@ -4,6 +4,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FriendsComponent } from './friends/friends.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SpecificPostComponent } from './specific-post/specific-post.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 
@@ -18,20 +19,27 @@ const routes: Routes = [
     component: ChatComponent,
   },
   {
-    path:"login",
-    component:UserLoginComponent
+    path: 'login',
+    component: UserLoginComponent,
   },
   {
-    path:"signin",
-    component:UserSigninComponent
+    path: 'signin',
+    component: UserSigninComponent,
   },
   {
-    path:"friends",
-    component:FriendsComponent
+    path: 'friends',
+    component: FriendsComponent,
   },
   {
-    path:"profile",
-    component:ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  { path: 'profile/:id', 
+    component: ProfileComponent 
+  },
+  {
+    path:"post/:id",
+    component:SpecificPostComponent
   }
 ];
 

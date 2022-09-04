@@ -55,4 +55,7 @@ export class UserService {
   getUsersLikeOnPosts():Observable<any>{
     return this.http.post("http://localhost:8081/api/user/getUsersLikeOnPosts",{"email":sessionStorage.getItem("auth-user")})
   }
+  loadDifferentUserById(id:number):Observable<any>{
+    return this.http.get("http://localhost:8081/api/user/loadDifferentUserById?id="+id);
+  }
 }
